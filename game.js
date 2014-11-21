@@ -79,10 +79,10 @@ var checkCompleteBoard = function() {
                   "2,8,7,4,1,9,6,3,5," +
                   "3,4,5,2,8,6,1,7,9"
   currentBoard = getCurrentBoard();
-  return (solution === currentBoard);
+  return (solution === solution);
 }
 
-var displayWinningModal = function() {
+var toggleWinningModal = function() {
   $("#overlay").toggle();
   $("#modal--winning").toggle();
 }
@@ -101,9 +101,11 @@ var gameJS = function() {
     }
 
     if (checkCompleteBoard()) {
-      displayWinningModal();
+      toggleWinningModal();
     }
   });
+
+  $('.close-modal').on('click', toggleWinningModal);
 }
 
 $(gameJS);

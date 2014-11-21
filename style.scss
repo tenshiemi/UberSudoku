@@ -91,19 +91,37 @@ table.wrapper--table {
   border-right: solid 2px black;
 }
 
+a.close-modal {
+  background-color: $accent-color;
+  color: $neutral-color;
+  text-decoration: none;
+  padding: 10px 20px 10px 20px;
+}
+
+a.close-modal:visited {
+  color: $neutral-color;
+}
+
 #modal--winning {
   color: white;
   background-color: $primary-color;
-  height: 30%;
-  width: 30%;
+  height: 25%;
+  width: 35%;
   position: absolute;
   overflow: auto;
   margin:auto;
   top: 0; left: 0; bottom: 0; right: 0;
   text-align: center;
-  padding-top: 4em;
+  padding-top: 3em;
   z-index: 2;
   display: none;
+  @media screen and (max-width: $breakpoint-tablet) {
+    width: 60%;
+  }
+  @media screen and (max-width: $breakpoint-mobile) {
+    width: 90%;
+    padding-top: 1em;
+  }
 }
 
 #overlay {
@@ -117,4 +135,3 @@ table.wrapper--table {
   z-index: 1;
   display: none;
 }
-
