@@ -82,6 +82,11 @@ var checkCompleteBoard = function() {
   return (solution === currentBoard);
 }
 
+var displayWinningModal = function() {
+  $("#overlay").toggle();
+  $("#modal--winning").toggle();
+}
+
 var gameJS = function() {
   $("input").on('keyup', function() {
     var cellId = $(this).attr("data-cell");
@@ -93,6 +98,10 @@ var gameJS = function() {
       $(this).addClass("invalid");
     } else {
       $(this).removeClass("invalid");
+    }
+
+    if (checkCompleteBoard()) {
+      displayWinningModal();
     }
   });
 }
