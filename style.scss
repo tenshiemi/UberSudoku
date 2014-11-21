@@ -1,6 +1,10 @@
 $breakpoint-mobile: 500px;
 $breakpoint-tablet: 800px;
 
+$primary-color: #1A1A1A;
+$accent-color: #1DB2CC;
+$neutral-color: #E9E0D6;
+
 
 @font-face {
   font-family: 'museo';
@@ -11,7 +15,7 @@ $breakpoint-tablet: 800px;
 }
 
 body {
-  background-color: #E9E0D6;
+  background-color: $neutral-color;
   margin: 0px;
   font-family: futura;
   @media screen and (max-width: $breakpoint-tablet) {
@@ -23,7 +27,7 @@ body {
 }
 
 header {
-  background-color: #1A1A1A;
+  background-color: $primary-color;
   color: white;
   height: 5em;
 }
