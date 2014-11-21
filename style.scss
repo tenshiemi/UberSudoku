@@ -1,7 +1,66 @@
+@font-face {
+  font-family: 'museo';
+  src:url('fonts/Museo300-Regular-webfont.eot');
+  src:url('fonts/Museo300-Regular-webfont.svg');
+  src:url('fonts/Museo300-Regular-webfont.ttf');
+  src:url('fonts/Museo300-Regular-webfont.woff');
+}
+
+body {
+  background-color: #E9E0D6;
+  margin: 0px;
+  font-family: futura;
+}
+
+header {
+  background-color: #1A1A1A;
+  color: white;
+  height: 5em;
+}
+
+main {
+  padding-top: 5em;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+tr td {
+  border-spacing: 0px;
+  padding: 0px;
+}
+
 td {
-  border: 1px solid black;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+}
+
+input {
+  padding: 10px;
+  border: none;
+  font-size: 1.6em;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'museo', sans-serif;
+  letter-spacing: 2px;
+  font-size: 4em;
+  margin: 0px;
+}
+
+.container {
+  max-width: 960px;
+  text-align: center;
+  margin: auto;
+}
+
+.wrapper--table {
+  margin: auto;
 }
 
 .invalid {
   color: red;
 }
+
