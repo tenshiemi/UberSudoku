@@ -22,6 +22,12 @@ var getCurrentColumn = function(cellId) {
   return getValuesOfCells(stripUndefinedValues(columnOfCells));
 }
 
+var getCurrentGroup = function(cellId) {
+  var currentGroup = cellId.closest('table');
+  var groupCells = $("[data-group=" + currentGroup.data("group") + "] input");
+  return getValuesOfCells(stripUndefinedValues(groupCells));
+}
+
 var isInputValid = function(cellInput) {
   return !isNaN(cellInput);
 }
