@@ -13,7 +13,7 @@ body {
       font-size: 90%; } }
   @media screen and (max-width: 500px) {
     body {
-      font-size: 75%; } }
+      font-size: 70%; } }
 
 header {
   background-color: #1A1A1A;
@@ -41,7 +41,11 @@ input {
   text-align: center; }
   @media screen and (max-width: 500px) {
     input {
-      padding: 5px 0 5px 0; } }
+      padding: 5px 0 5px 0;
+      width: 31px; } }
+
+input:not([disabled]) {
+  color: #1DB2CC; }
 
 h1 {
   font-family: 'museo', sans-serif;
@@ -59,7 +63,7 @@ table.wrapper--table {
   border-bottom: 2px solid black; }
 
 .invalid {
-  color: red; }
+  color: red !important; }
 
 .large-row {
   border-right: solid 2px black; }

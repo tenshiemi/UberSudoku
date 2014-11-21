@@ -22,7 +22,7 @@ body {
     font-size: 90%;
   }
   @media screen and (max-width: $breakpoint-mobile) {
-    font-size: 75%;
+    font-size: 70%;
   }
 }
 
@@ -57,7 +57,12 @@ input {
   text-align: center;
   @media screen and (max-width: $breakpoint-mobile) {
     padding: 5px 0 5px 0;
+    width: 31px;
   }
+}
+
+input:not([disabled]) {
+  color: $accent-color;
 }
 
 h1 {
@@ -79,7 +84,7 @@ table.wrapper--table {
 }
 
 .invalid {
-  color: red;
+  color: red !important;
 }
 
 .large-row {
