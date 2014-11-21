@@ -1,6 +1,6 @@
 var stripUndefinedValues = function(array) {
   return $.grep(array, function(item) {
-    return item.hasAttribute("value");
+    return item.value !== "";
   });
 }
 
