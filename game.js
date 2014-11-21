@@ -47,7 +47,10 @@ var gameJS = function() {
     if (!isInputValid(cellValue) ||
       !isRowValid(cellValue, getCurrentRow(cellId)) ||
       !isColumnValid(cellValue, getCurrentColumn(cellId))) {
-      return false;
+      $(this).addClass("invalid");
+    } else {
+      $(this).val(cellValue);
+      $(this).removeClass("invalid");
     }
   });
 }
