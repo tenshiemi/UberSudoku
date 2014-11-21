@@ -1,3 +1,7 @@
+$breakpoint-mobile: 500px;
+$breakpoint-tablet: 800px;
+
+
 @font-face {
   font-family: 'museo';
   src:url('fonts/Museo300-Regular-webfont.eot');
@@ -10,6 +14,12 @@ body {
   background-color: #E9E0D6;
   margin: 0px;
   font-family: futura;
+  @media screen and (max-width: $breakpoint-tablet) {
+    font-size: 90%;
+  }
+  @media screen and (max-width: $breakpoint-mobile) {
+    font-size: 75%;
+  }
 }
 
 header {
@@ -19,7 +29,7 @@ header {
 }
 
 main {
-  padding-top: 5em;
+  padding-top: 3em;
 }
 
 table {
@@ -37,10 +47,13 @@ td {
 }
 
 input {
-  padding: 10px;
+  padding: 15px 0 15px 0;
   border: none;
   font-size: 1.6em;
   text-align: center;
+  @media screen and (max-width: $breakpoint-mobile) {
+    padding: 5px 0 5px 0;
+  }
 }
 
 h1 {
@@ -56,11 +69,15 @@ h1 {
   margin: auto;
 }
 
-.wrapper--table {
+table.wrapper--table {
   margin: auto;
+  border-bottom: 2px solid black;
 }
 
 .invalid {
   color: red;
 }
 
+.large-row {
+  border-right: solid 2px black;
+}

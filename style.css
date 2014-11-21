@@ -8,6 +8,12 @@ body {
   background-color: #E9E0D6;
   margin: 0px;
   font-family: futura; }
+  @media screen and (max-width: 800px) {
+    body {
+      font-size: 90%; } }
+  @media screen and (max-width: 500px) {
+    body {
+      font-size: 75%; } }
 
 header {
   background-color: #1A1A1A;
@@ -15,7 +21,7 @@ header {
   height: 5em; }
 
 main {
-  padding-top: 5em; }
+  padding-top: 3em; }
 
 table {
   border-collapse: collapse; }
@@ -29,10 +35,13 @@ td {
   border-top: 1px solid black; }
 
 input {
-  padding: 10px;
+  padding: 15px 0 15px 0;
   border: none;
   font-size: 1.6em;
   text-align: center; }
+  @media screen and (max-width: 500px) {
+    input {
+      padding: 5px 0 5px 0; } }
 
 h1 {
   font-family: 'museo', sans-serif;
@@ -45,10 +54,14 @@ h1 {
   text-align: center;
   margin: auto; }
 
-.wrapper--table {
-  margin: auto; }
+table.wrapper--table {
+  margin: auto;
+  border-bottom: 2px solid black; }
 
 .invalid {
   color: red; }
+
+.large-row {
+  border-right: solid 2px black; }
 
 /*# sourceMappingURL=style.css.map */
