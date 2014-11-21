@@ -6,7 +6,7 @@ var stripUndefinedValues = function(array) {
 
 var getValuesOfCells = function(array) {
   return $.map(array, function(item) {
-    return item["value"];
+    return item.value;
   });
 }
 
