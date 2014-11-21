@@ -25,6 +25,10 @@ var gameJS = function() {
   $("input").on('keyup', function() {
     var cellId = $(this).attr("data-cell");
     var cellValue = $(this).val();
+    if (!isInputValid(cellValue) ||
+      !isRowValid(cellValue, getCurrentRow(cellId))) {
+      return false;
+    }
   });
 }
 
