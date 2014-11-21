@@ -1,25 +1,25 @@
+var stripUndefinedValues = function(array) {
+  return $.grep(array, function(item) {
+    return item.hasAttribute("value");
+  });
+}
+
+var getValuesOfCells = function(array) {
+  return $.map(array, function(item) {
+    return item["value"];
+  });
+}
+
 var getCurrentRow = function(cellId) {
   var row = cellId[0],
-      currentRow = [],
       rowOfCells = $( "input[data-cell^= '" +  row + "']" );
-  for (var i = 0; i < rowOfCells.length; i++) {
-    if (rowOfCells[i].hasAttribute("value")) {
-      currentRow.push(rowOfCells[i]["value"]);
-    }
-  }
-  return currentRow;
+  return getValuesOfCells(stripUndefinedValues(rowOfCells));
 }
 
 var getCurrentColumn = function(cellId) {
   var column = cellId[1],
-      currentColumn = [],
       columnOfCells = $( "input[data-cell$= '" +  column + "']" );
-  for (var i = 0; i < columnOfCells.length; i++) {
-    if (columnOfCells[i].hasAttribute("value")) {
-      currentColumn.push(columnOfCells[i]["value"]);
-    }
-  }
-  return currentColumn;
+  return getValuesOfCells(stripUndefinedValues(columnOfCells));
 }
 
 var isInputValid = function(cellInput) {
