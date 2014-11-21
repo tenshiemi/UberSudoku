@@ -12,20 +12,20 @@ var getValuesOfCells = function(array) {
 
 var getCurrentRow = function(cellId) {
   var row = cellId[0],
-      rowOfCells = $( "input[data-cell^= '" +  row + "']" );
-  return getValuesOfCells(stripUndefinedValues(rowOfCells));
+      $rowOfCells = $( "input[data-cell^= '" +  row + "']" );
+  return getValuesOfCells(stripUndefinedValues($rowOfCells));
 }
 
 var getCurrentColumn = function(cellId) {
   var column = cellId[1],
-      columnOfCells = $( "input[data-cell$= '" +  column + "']" );
-  return getValuesOfCells(stripUndefinedValues(columnOfCells));
+      $columnOfCells = $( "input[data-cell$= '" +  column + "']" );
+  return getValuesOfCells(stripUndefinedValues($columnOfCells));
 }
 
 var getCurrentGroup = function(cellId) {
-  var currentGroup = cellId.closest('table');
-  var groupCells = $("[data-group=" + currentGroup.data("group") + "] input");
-  return getValuesOfCells(stripUndefinedValues(groupCells));
+  var $currentGroup = cellId.closest('table');
+  var $groupCells = $("[data-group=" + $currentGroup.data("group") + "] input");
+  return getValuesOfCells(stripUndefinedValues($groupCells));
 }
 
 var isInputValid = function(cellInput) {
