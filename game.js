@@ -1,5 +1,13 @@
-var getCurrentRow = function(cellInput) {
-
+var getCurrentRow = function(cellId) {
+  var row = cellId[0],
+      currentRow = [],
+      rowOfCells = $( "input[data-cell^= '" +  row + "']" );
+  for (var i = 0; i < rowOfCells.length; i++) {
+    if (rowOfCells[i].hasAttribute("value")) {
+      currentRow.push(rowOfCells[i]["value"]);
+    }
+  }
+  return currentRow;
 }
 
 var isInputValid = function(cellInput) {
