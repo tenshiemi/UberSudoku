@@ -70,7 +70,6 @@ var gameJS = function() {
       !isGroupValid(cellValue, getCurrentGroup($(this)))) {
       $(this).addClass("invalid");
     } else {
-      $(this).val(cellValue);
       $(this).removeClass("invalid");
     }
   });
