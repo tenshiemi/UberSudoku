@@ -1,6 +1,12 @@
+var isInputValid = function() {
+
+}
+
 var gameJS = function() {
   $("input").on('keyup', function() {
-    alert("hi");
+    var cellId = $(this).attr("data-cell");
+    var cellValue = $(this).val();
+    isInputValid(cellValue);
   });
 }
 
