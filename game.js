@@ -40,13 +40,21 @@ var isColumnValid = function(cellInput, currentColumn) {
   return true;
 }
 
+var isGroupValid = function(cellInput, currentGroup) {
+  if (currentGroup.indexOf(cellInput) !== -1) {
+    return false;
+  }
+  return true;
+}
+
 var gameJS = function() {
   $("input").on('keyup', function() {
     var cellId = $(this).attr("data-cell");
     var cellValue = $(this).val();
     if (!isInputValid(cellValue) ||
       !isRowValid(cellValue, getCurrentRow(cellId)) ||
-      !isColumnValid(cellValue, getCurrentColumn(cellId))) {
+      !isColumnValid(cellValue, getCurrentColumn(cellId)) ||
+      !isGroupValid(cellValue, getCurrentGroup($(this)))) {
       $(this).addClass("invalid");
     } else {
       $(this).val(cellValue);
