@@ -32,22 +32,29 @@ var isInputValid = function(cellInput) {
   return !isNaN(cellInput);
 }
 
+var findInstances = function(cellInput, line) {
+  var numberOccurences = $.grep(line, function(cell) {
+    return cell === cellInput;
+  }).length
+  return numberOccurences;
+}
+
 var isRowValid = function(cellInput, currentRow) {
-  if (currentRow.indexOf(cellInput) !== -1) {
+  if (findInstances(cellInput, currentRow) > 1) {
     return false;
   }
   return true;
 }
 
 var isColumnValid = function(cellInput, currentColumn) {
-  if (currentColumn.indexOf(cellInput) !== -1) {
+  if (findInstances(cellInput, currentColumn) > 1) {
     return false;
   }
   return true;
 }
 
 var isGroupValid = function(cellInput, currentGroup) {
-  if (currentGroup.indexOf(cellInput) !== -1) {
+  if (findInstances(cellInput, currentGroup) > 1) {
     return false;
   }
   return true;
