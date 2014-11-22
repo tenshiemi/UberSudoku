@@ -1,0 +1,123 @@
+@font-face {
+  font-family: 'museo';
+  src: url("fonts/Museo300-Regular-webfont.eot");
+  src: url("fonts/Museo300-Regular-webfont.svg");
+  src: url("fonts/Museo300-Regular-webfont.ttf");
+  src: url("fonts/Museo300-Regular-webfont.woff"); }
+body {
+  background-color: #eae1d7;
+  margin: 0px;
+  font-family: futura; }
+  @media screen and (max-width: 800px) {
+    body {
+      font-size: 90%; } }
+  @media screen and (max-width: 500px) {
+    body {
+      font-size: 70%; } }
+
+header {
+  background-color: #1a1a1a;
+  color: white;
+  height: 5em;
+  text-align: center; }
+
+main {
+  padding-top: 3em; }
+
+table {
+  border-collapse: collapse; }
+
+tr td {
+  border-spacing: 0px;
+  padding: 0px; }
+
+td {
+  border-left: 1px solid black;
+  border-top: 1px solid black; }
+
+input {
+  background-color: white;
+  padding: 15px 0 15px 0;
+  border: none;
+  font-size: 1.6em;
+  text-align: center;
+  width: 60px; }
+  @media screen and (max-width: 800px) {
+    input {
+      padding: 10px 0 10px 0;
+      width: 50px; } }
+  @media screen and (max-width: 500px) {
+    input {
+      padding: 5px 0 5px 0;
+      width: 31px; } }
+
+input:not([disabled]) {
+  color: #1db3cd; }
+
+h1 {
+  font-family: 'museo', sans-serif;
+  letter-spacing: 2px;
+  font-size: 4em;
+  margin: 0px; }
+
+.container {
+  max-width: 960px;
+  margin: auto; }
+
+table.wrapper--table {
+  margin: auto;
+  border-bottom: 2px solid black; }
+
+.invalid {
+  color: red !important; }
+
+.large-row {
+  border-right: solid 2px black; }
+
+a.close-modal {
+  background-color: #1db3cd;
+  color: #eae1d7;
+  text-decoration: none;
+  padding: 10px 20px 10px 20px;
+  display: inline-block;
+  margin-top: 15px; }
+
+a.close-modal:visited {
+  color: #eae1d7; }
+
+#modal--winning {
+  color: white;
+  background-color: #1a1a1a;
+  height: 25%;
+  width: 35%;
+  position: absolute;
+  overflow: auto;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  padding-top: 3em;
+  z-index: 2;
+  display: none; }
+  @media screen and (max-width: 800px) {
+    #modal--winning {
+      width: 60%; } }
+  @media screen and (max-width: 500px) {
+    #modal--winning {
+      width: 90%;
+      padding-top: 1em; } }
+
+#overlay {
+  background-color: rgba(26, 26, 26, 0.6);
+  opacity: 0.4%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: none; }
+
+/*# sourceMappingURL=style.css.map */
