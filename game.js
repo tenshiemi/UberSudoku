@@ -10,15 +10,9 @@ var getValuesOfCells = function(array) {
   });
 }
 
-var getCurrentRow = function(cellId) {
-  var row = cellId[0],
-      $rowOfCells = $( "input[data-cell^= '" +  row + "']" );
-  return getValuesOfCells(stripUndefinedValues($rowOfCells));
-}
-
-var getCurrentColumn = function(cellId) {
-  var column = cellId[1],
-      $columnOfCells = $( "input[data-cell$= '" +  column + "']" );
+var getCurrentLine = function(cellId, cellIndex, dataIndex) {
+  var column = cellId[cellIndex],
+      $columnOfCells = $( "input[data-cell" + dataIndex + "= '" +  column + "']" );
   return getValuesOfCells(stripUndefinedValues($columnOfCells));
 }
 
@@ -47,9 +41,9 @@ var isCellGroupValid = function(cellInput, currentGroup) {
 }
 
 var getCurrentBoard = function() {
-  var board = getCurrentRow("0");
+  var board = getCurrentLine("0", 0, "^");
   for (var i=1; i<9; i++) {
-    board += "," + getCurrentRow(i.toString());
+    board += "," + getCurrentLine(i.toString(), 0, "^");
   }
   return board;
 }
@@ -78,8 +72,8 @@ var gameJS = function() {
     var cellId = $(this).attr("data-cell");
     var cellValue = $(this).val();
     if (!isInputValid(cellValue) ||
-      !isCellGroupValid(cellValue, getCurrentRow(cellId)) ||
-      !isCellGroupValid(cellValue, getCurrentColumn(cellId)) ||
+      !isCellGroupValid(cellValue, getCurrentLine(cellId, 0, "^")) ||
+      !isCellGroupValid(cellValue, getCurrentLine(cellId, 1, "$")) ||
       !isCellGroupValid(cellValue, getCurrentSquare($(this)))) {
       $(this).addClass("invalid");
     } else {
