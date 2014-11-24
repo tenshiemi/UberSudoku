@@ -53,6 +53,18 @@ var toggleWinningModal = function() {
   $("#modal--winning").toggle();
 }
 
+var clearGameBoard = function() {
+  activeCells = $('input:enabled');
+  for (var i = 0; i < activeCells.length; i++) {
+    activeCells[i].value = "";
+  }
+}
+
+var refreshGame = function() {
+  toggleWinningModal();
+  clearGameBoard();
+}
+
 var isCellValid = function(currentCell) {
   var cellValue = currentCell.val();
   var cellId = currentCell.attr("data-cell");
@@ -90,7 +102,7 @@ var gameJS = function() {
     }
   });
 
-  $('.close-modal').on('click', toggleWinningModal);
+  $('.close-modal').on('click', refreshGame);
 }
 
 $(gameJS);
