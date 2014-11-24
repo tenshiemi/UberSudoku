@@ -48,21 +48,6 @@ var getCurrentBoard = function() {
   return board;
 }
 
-var checkCompleteBoard = function() {
-  var currentCell;
-  for (var i=0; i<8; i++) {
-    for (var j=0; j<8; j++) {
-      currentCell = $("input[data-cell='" +  i + j + "']" )[0];
-      if (currentCell.value === "") {
-        return false
-      } else if (!isCellValid(currentCell.value, currentCell.getAttribute('data-cell'), currentCell)) {
-        return false;
-      }
-    }
-  }
-  return true
-}
-
 var toggleWinningModal = function() {
   $("#overlay").toggle();
   $("#modal--winning").toggle();
@@ -74,6 +59,21 @@ var isCellValid = function(currentCell) {
   return (isCellGroupValid(cellValue, getCurrentLine(cellId, 0, "^")) &&
       isCellGroupValid(cellValue, getCurrentLine(cellId, 1, "$")) &&
       isCellGroupValid(cellValue, getCurrentSquare(currentCell)));
+}
+
+var checkCompleteBoard = function() {
+  var currentCell;
+  for (var i=0; i<8; i++) {
+    for (var j=0; j<8; j++) {
+      $currentCell = $("input[data-cell='" +  i + j + "']" );
+      if ($currentCell.val() === "") {
+        return false
+      } else if (!isCellValid($currentCell)) {
+        return false;
+      }
+    }
+  }
+  return true
 }
 
 var gameJS = function() {
