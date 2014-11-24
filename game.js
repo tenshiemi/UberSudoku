@@ -12,7 +12,7 @@ var getValuesOfCells = function(array) {
 
 var getCurrentLine = function(cellId, cellIndex, dataIndex) {
   var column = cellId[cellIndex],
-      $columnOfCells = $( "input[data-cell" + dataIndex + "= '" +  column + "']" );
+      $columnOfCells = $( "input[data-cell" + dataIndex + "='" +  column + "']" );
   return getValuesOfCells(stripUndefinedValues($columnOfCells));
 }
 
@@ -48,23 +48,19 @@ var getCurrentBoard = function() {
   return board;
 }
 
-var checkAllRows = function() {
-
-}
-
-var checkAllColumns = function() {
-
-}
-
-var checkAllCellSquares = function() {
-
-}
-
 var checkCompleteBoard = function() {
-  if (checkAllRows() && checkAllColumns() && checkAllCellSquares()) {
-    return true;
+  var currentCell;
+  for (var i=0; i<8; i++) {
+    for (var j=0; j<8; j++) {
+      currentCell = $("input[data-cell='" +  i + j + "']" )[0];
+      if (currentCell.value === "") {
+        return false
+      } else if (!isCellValid(currentCell.value, currentCell.getAttribute('data-cell'), currentCell)) {
+        return false;
+      }
+    }
   }
-  return false
+  return true
 }
 
 var toggleWinningModal = function() {
