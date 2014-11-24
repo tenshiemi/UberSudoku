@@ -1,3 +1,26 @@
+var resumeGame = function() {
+  if (!window.localStorage) {
+    return false;
+  }
+
+  if (localStorage["game_in_progress"] === 'true') {
+    setBoardFromSave();
+  } else {
+    localStorage.setItem("game_in_progress", true);
+  }
+}
+
+var setBoardFromSave = function() {
+  var currentCellIndex;
+  activeCells = $('input:enabled');
+  for (var i = 0; i < activeCells.length; i++) {
+    currentCellIndex = activeCells[i].getAttribute('data-cell');
+    if (localStorage[currentCellIndex]) {
+      activeCells[i].value = localStorage.getItem(currentCellIndex);
+    }
+  }
+}
+
 var saveCell = function(cell) {
   localStorage.setItem(cell.attr('data-cell'), cell.val());
 }
@@ -94,6 +117,8 @@ var checkCompleteBoard = function() {
 }
 
 var gameJS = function() {
+  resumeGame();
+
   $("input").on('keyup', function() {
     var $that = $(this);
     if (!isInputValid($(this).val()) || !isCellValid($that)) {
