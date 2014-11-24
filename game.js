@@ -39,7 +39,7 @@ var findInstances = function(cellInput, line) {
   return numberOccurences;
 }
 
-var isGroupValid = function(cellInput, currentGroup) {
+var isCellGroupValid = function(cellInput, currentGroup) {
   if (findInstances(cellInput, currentGroup) > 1) {
     return false;
   }
@@ -78,9 +78,9 @@ var gameJS = function() {
     var cellId = $(this).attr("data-cell");
     var cellValue = $(this).val();
     if (!isInputValid(cellValue) ||
-      !isGroupValid(cellValue, getCurrentRow(cellId)) ||
-      !isGroupValid(cellValue, getCurrentColumn(cellId)) ||
-      !isGroupValid(cellValue, getCurrentSquare($(this)))) {
+      !isCellGroupValid(cellValue, getCurrentRow(cellId)) ||
+      !isCellGroupValid(cellValue, getCurrentColumn(cellId)) ||
+      !isCellGroupValid(cellValue, getCurrentSquare($(this)))) {
       $(this).addClass("invalid");
     } else {
       $(this).removeClass("invalid");
