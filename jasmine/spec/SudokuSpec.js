@@ -12,31 +12,11 @@ describe("UberSudoku", function() {
 
     describe("validate cell input within the row", function() {
       it("is valid if input does not already exist in its row", function() {
-        expect(isRowValid(1, [2,3,4])).toEqual(true);
+        expect(isCellGroupValid(1, [2,3,4])).toEqual(true);
       });
 
       it("is invalid if it is a dup value in the same row", function() {
-        expect(isRowValid(1, [1,2,3,1])).toEqual(false);
-      });
-    });
-
-    describe("validate cell input within the column", function() {
-      it("is valid if input does not already exist in its column", function() {
-        expect(isColumnValid(1, [2,3,4])).toEqual(true);
-      });
-
-      it("is invalid if it is a dup value in the same column", function() {
-        expect(isColumnValid(1, [1,2,3,1])).toEqual(false);
-      });
-    });
-
-    describe("validate cell input within the group", function() {
-      it("is valid if input does not already exist in its group", function() {
-        expect(isColumnValid(1, [2,3,4])).toEqual(true);
-      });
-
-      it("is invalid if it is a dup value in the same group", function() {
-        expect(isColumnValid(1, [1,2,3,1])).toEqual(false);
+        expect(isCellGroupValid(1, [1,2,3,1])).toEqual(false);
       });
     });
 
