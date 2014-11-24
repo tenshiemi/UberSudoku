@@ -67,6 +67,7 @@ var clearGameBoard = function() {
 var refreshGame = function() {
   toggleWinningModal();
   clearGameBoard();
+  localStorage.clear();
 }
 
 var isCellValid = function(currentCell) {
