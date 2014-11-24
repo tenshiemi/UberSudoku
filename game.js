@@ -63,8 +63,8 @@ var isCellValid = function(currentCell) {
 
 var checkCompleteBoard = function() {
   var currentCell;
-  for (var i=0; i<8; i++) {
-    for (var j=0; j<8; j++) {
+  for (var i=0; i<=8; i++) {
+    for (var j=0; j<=8; j++) {
       $currentCell = $("input[data-cell='" +  i + j + "']" );
       if ($currentCell.val() === "") {
         return false
