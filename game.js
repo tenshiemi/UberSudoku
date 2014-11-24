@@ -68,7 +68,9 @@ var toggleWinningModal = function() {
   $("#modal--winning").toggle();
 }
 
-var isCellValid = function(cellValue, cellId, currentCell) {
+var isCellValid = function(currentCell) {
+  var cellValue = currentCell.val();
+  var cellId = currentCell.attr("data-cell");
   return (isCellGroupValid(cellValue, getCurrentLine(cellId, 0, "^")) &&
       isCellGroupValid(cellValue, getCurrentLine(cellId, 1, "$")) &&
       isCellGroupValid(cellValue, getCurrentSquare(currentCell)));
@@ -76,10 +78,8 @@ var isCellValid = function(cellValue, cellId, currentCell) {
 
 var gameJS = function() {
   $("input").on('keyup', function() {
-    var cellId = $(this).attr("data-cell");
-    var cellValue = $(this).val();
     var $that = $(this);
-    if (!isInputValid(cellValue) || !isCellValid(cellValue, cellId, $that)) {
+    if (!isInputValid($(this).val()) || !isCellValid($that)) {
       $(this).addClass("invalid");
     } else {
       $(this).removeClass("invalid");
