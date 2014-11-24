@@ -12,7 +12,7 @@ var getValuesOfCells = function(array) {
 
 var getCurrentLine = function(cellId, cellIndex, dataIndex) {
   var column = cellId[cellIndex],
-      $columnOfCells = $( "input[data-cell" + dataIndex + "= '" +  column + "']" );
+      $columnOfCells = $( "input[data-cell" + dataIndex + "='" +  column + "']" );
   return getValuesOfCells(stripUndefinedValues($columnOfCells));
 }
 
@@ -48,20 +48,6 @@ var getCurrentBoard = function() {
   return board;
 }
 
-var checkCompleteBoard = function() {
-  var solution =  "5,3,4,6,7,8,9,1,2," +
-                  "6,7,2,1,9,5,3,4,8," +
-                  "1,9,8,3,4,2,5,6,7," +
-                  "8,5,9,7,6,1,4,2,3," +
-                  "4,2,6,8,5,3,7,9,1," +
-                  "7,1,3,9,2,4,8,5,6," +
-                  "9,6,1,5,3,7,2,8,4," +
-                  "2,8,7,4,1,9,6,3,5," +
-                  "3,4,5,2,8,6,1,7,9"
-  currentBoard = getCurrentBoard();
-  return (solution === currentBoard);
-}
-
 var toggleWinningModal = function() {
   $("#overlay").toggle();
   $("#modal--winning").toggle();
@@ -73,6 +59,21 @@ var isCellValid = function(currentCell) {
   return (isCellGroupValid(cellValue, getCurrentLine(cellId, 0, "^")) &&
       isCellGroupValid(cellValue, getCurrentLine(cellId, 1, "$")) &&
       isCellGroupValid(cellValue, getCurrentSquare(currentCell)));
+}
+
+var checkCompleteBoard = function() {
+  var currentCell;
+  for (var i=0; i<=8; i++) {
+    for (var j=0; j<=8; j++) {
+      $currentCell = $("input[data-cell='" +  i + j + "']" );
+      if ($currentCell.val() === "") {
+        return false
+      } else if (!isCellValid($currentCell)) {
+        return false;
+      }
+    }
+  }
+  return true
 }
 
 var gameJS = function() {
