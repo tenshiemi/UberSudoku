@@ -22,10 +22,10 @@ var getCurrentColumn = function(cellId) {
   return getValuesOfCells(stripUndefinedValues($columnOfCells));
 }
 
-var getCurrentGroup = function(cellId) {
-  var $currentGroup = cellId.closest('table');
-  var $groupCells = $("[data-group=" + $currentGroup.data("group") + "] input");
-  return getValuesOfCells(stripUndefinedValues($groupCells));
+var getCurrentSquare = function(cellId) {
+  var $currentSquare = cellId.closest('table');
+  var $squareCells = $("[data-group=" + $currentSquare.data("group") + "] input");
+  return getValuesOfCells(stripUndefinedValues($squareCells));
 }
 
 var isInputValid = function(cellInput) {
@@ -37,20 +37,6 @@ var findInstances = function(cellInput, line) {
     return cell === cellInput;
   }).length
   return numberOccurences;
-}
-
-var isRowValid = function(cellInput, currentRow) {
-  if (findInstances(cellInput, currentRow) > 1) {
-    return false;
-  }
-  return true;
-}
-
-var isColumnValid = function(cellInput, currentColumn) {
-  if (findInstances(cellInput, currentColumn) > 1) {
-    return false;
-  }
-  return true;
 }
 
 var isGroupValid = function(cellInput, currentGroup) {
@@ -79,7 +65,7 @@ var checkCompleteBoard = function() {
                   "2,8,7,4,1,9,6,3,5," +
                   "3,4,5,2,8,6,1,7,9"
   currentBoard = getCurrentBoard();
-  return (solution === solution);
+  return (solution === currentBoard);
 }
 
 var toggleWinningModal = function() {
@@ -92,9 +78,9 @@ var gameJS = function() {
     var cellId = $(this).attr("data-cell");
     var cellValue = $(this).val();
     if (!isInputValid(cellValue) ||
-      !isRowValid(cellValue, getCurrentRow(cellId)) ||
-      !isColumnValid(cellValue, getCurrentColumn(cellId)) ||
-      !isGroupValid(cellValue, getCurrentGroup($(this)))) {
+      !isGroupValid(cellValue, getCurrentRow(cellId)) ||
+      !isGroupValid(cellValue, getCurrentColumn(cellId)) ||
+      !isGroupValid(cellValue, getCurrentSquare($(this)))) {
       $(this).addClass("invalid");
     } else {
       $(this).removeClass("invalid");
