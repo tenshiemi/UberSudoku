@@ -1,3 +1,7 @@
+var saveCell = function(cell) {
+  localStorage.setItem(cell.attr('data-cell'), cell.val());
+}
+
 var stripUndefinedValues = function(array) {
   return $.grep(array, function(item) {
     return item.value !== "";
@@ -95,6 +99,10 @@ var gameJS = function() {
       $(this).addClass("invalid");
     } else {
       $(this).removeClass("invalid");
+    }
+
+    if (window.localStorage) {
+      saveCell($that);
     }
 
     if (checkCompleteBoard()) {
