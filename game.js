@@ -16,8 +16,8 @@ var getCurrentLine = function(cellId, cellIndex, dataIndex) {
   return getValuesOfCells(stripUndefinedValues($columnOfCells));
 }
 
-var getCurrentSquare = function(cellId) {
-  var $currentSquare = cellId.closest('table');
+var getCurrentSquare = function(currentCell) {
+  var $currentSquare = currentCell.closest('table');
   var $squareCells = $("[data-group=" + $currentSquare.data("group") + "] input");
   return getValuesOfCells(stripUndefinedValues($squareCells));
 }
@@ -72,14 +72,18 @@ var toggleWinningModal = function() {
   $("#modal--winning").toggle();
 }
 
+var isCellValid = function(cellValue, cellId, currentCell) {
+  return (isCellGroupValid(cellValue, getCurrentLine(cellId, 0, "^")) &&
+      isCellGroupValid(cellValue, getCurrentLine(cellId, 1, "$")) &&
+      isCellGroupValid(cellValue, getCurrentSquare(currentCell)));
+}
+
 var gameJS = function() {
   $("input").on('keyup', function() {
     var cellId = $(this).attr("data-cell");
     var cellValue = $(this).val();
-    if (!isInputValid(cellValue) ||
-      !isCellGroupValid(cellValue, getCurrentLine(cellId, 0, "^")) ||
-      !isCellGroupValid(cellValue, getCurrentLine(cellId, 1, "$")) ||
-      !isCellGroupValid(cellValue, getCurrentSquare($(this)))) {
+    var $that = $(this);
+    if (!isInputValid(cellValue) || !isCellValid(cellValue, cellId, $that)) {
       $(this).addClass("invalid");
     } else {
       $(this).removeClass("invalid");
