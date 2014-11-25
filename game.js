@@ -11,8 +11,8 @@ var resumeGame = function() {
 }
 
 var setBoardFromSave = function() {
-  var currentCellIndex;
-  activeCells = $('input:enabled');
+  var currentCellIndex, $currentCell;
+  var activeCells = $('input:enabled');
   for (var i = 0; i < activeCells.length; i++) {
     currentCellIndex = activeCells[i].getAttribute('data-cell');
     if (localStorage[currentCellIndex]) {
