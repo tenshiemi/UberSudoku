@@ -71,6 +71,14 @@ var isCellGroupValid = function(cellInput, currentGroup) {
   return true;
 }
 
+var validateNewInput = function(that) {
+  if (!isInputValid(that.val()) || !isCellValid(that)) {
+    that.addClass("invalid");
+  } else {
+    that.removeClass("invalid");
+  }
+}
+
 var toggleWinningModal = function() {
   $("#overlay").toggle();
   $("#modal--winning").toggle();
@@ -120,11 +128,7 @@ var gameJS = function() {
 
   $("input").on('keyup', function() {
     var $that = $(this);
-    if (!isInputValid($(this).val()) || !isCellValid($that)) {
-      $(this).addClass("invalid");
-    } else {
-      $(this).removeClass("invalid");
-    }
+    validateNewInput($that);
 
     if (window.localStorage) {
       saveCell($that);
