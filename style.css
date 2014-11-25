@@ -22,7 +22,7 @@ header {
   text-align: center; }
 
 main {
-  padding-top: 3em; }
+  padding-top: 1em; }
 
 table {
   border-collapse: collapse; }
@@ -64,17 +64,7 @@ h1 {
   max-width: 960px;
   margin: auto; }
 
-table.wrapper--table {
-  margin: auto;
-  border-bottom: 2px solid black; }
-
-.invalid {
-  color: red !important; }
-
-.large-row {
-  border-right: solid 2px black; }
-
-a.close-modal {
+a.blue-button {
   background-color: #1db3cd;
   color: #eae1d7;
   text-decoration: none;
@@ -82,8 +72,23 @@ a.close-modal {
   display: inline-block;
   margin-top: 15px; }
 
-a.close-modal:visited {
+a.blue-button:visited {
   color: #eae1d7; }
+
+table.wrapper--table {
+  margin: 20px auto;
+  border-bottom: 2px solid black; }
+
+.center {
+  display: table;
+  margin: 0 auto;
+  text-align: center; }
+
+.invalid {
+  color: red !important; }
+
+.large-row {
+  border-right: solid 2px black; }
 
 #modal--winning {
   color: white;
