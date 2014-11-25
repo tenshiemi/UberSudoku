@@ -16,7 +16,11 @@ var setBoardFromSave = function() {
   for (var i = 0; i < activeCells.length; i++) {
     currentCellIndex = activeCells[i].getAttribute('data-cell');
     if (localStorage[currentCellIndex]) {
-      activeCells[i].value = localStorage.getItem(currentCellIndex);
+      $currentCell = $("input[data-cell='" +  currentCellIndex + "']" );
+      $currentCell.val(localStorage.getItem(currentCellIndex));
+      if (!isCellValid($currentCell)) {
+        $currentCell.addClass("invalid");
+      }
     }
   }
 }
@@ -91,6 +95,7 @@ var refreshGame = function() {
   toggleWinningModal();
   clearGameBoard();
   localStorage.clear();
+  localStorage.setItem("game_in_progress", true);
 }
 
 var isCellValid = function(currentCell) {
