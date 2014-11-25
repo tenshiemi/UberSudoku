@@ -91,13 +91,17 @@ var clearGameBoard = function() {
   }
 }
 
+var resetSaveGame = function() {
+  localStorage.clear();
+  localStorage.setItem("game_in_progress", true);
+}
+
 var refreshGame = function() {
   if ($("#modal--winning").css("display") !== "none") {
     toggleWinningModal();
   }
   clearGameBoard();
-  localStorage.clear();
-  localStorage.setItem("game_in_progress", true);
+  resetSaveGame();
 }
 
 var isCellValid = function(currentCell) {
