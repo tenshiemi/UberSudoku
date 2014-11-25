@@ -1,3 +1,34 @@
+var resumeGame = function() {
+  if (!window.localStorage) {
+    return false;
+  }
+
+  if (localStorage["game_in_progress"] === 'true') {
+    setBoardFromSave();
+  } else {
+    localStorage.setItem("game_in_progress", true);
+  }
+}
+
+var setBoardFromSave = function() {
+  var currentCellIndex;
+  activeCells = $('input:enabled');
+  for (var i = 0; i < activeCells.length; i++) {
+    currentCellIndex = activeCells[i].getAttribute('data-cell');
+    if (localStorage[currentCellIndex]) {
+      $currentCell = $("input[data-cell='" +  currentCellIndex + "']" );
+      $currentCell.val(localStorage.getItem(currentCellIndex));
+      if (!isCellValid($currentCell)) {
+        $currentCell.addClass("invalid");
+      }
+    }
+  }
+}
+
+var saveCell = function(cell) {
+  localStorage.setItem(cell.attr('data-cell'), cell.val());
+}
+
 var stripUndefinedValues = function(array) {
   return $.grep(array, function(item) {
     return item.value !== "";
@@ -63,6 +94,8 @@ var clearGameBoard = function() {
 var refreshGame = function() {
   toggleWinningModal();
   clearGameBoard();
+  localStorage.clear();
+  localStorage.setItem("game_in_progress", true);
 }
 
 var isCellValid = function(currentCell) {
@@ -89,12 +122,18 @@ var checkCompleteBoard = function() {
 }
 
 var gameJS = function() {
+  resumeGame();
+
   $("input").on('keyup', function() {
     var $that = $(this);
     if (!isInputValid($(this).val()) || !isCellValid($that)) {
       $(this).addClass("invalid");
     } else {
       $(this).removeClass("invalid");
+    }
+
+    if (window.localStorage) {
+      saveCell($that);
     }
 
     if (checkCompleteBoard()) {
