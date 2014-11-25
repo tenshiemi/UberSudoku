@@ -16,7 +16,7 @@ To make the design adaptive, I used two breakpoints for mobile and tablet. Visua
 
 ## Trade-offs + Desired features
 
-If I had more time I would have liked to implement a game board generator. I also would have liked to make invalid input markup optional.
+If I had more time I would have liked to implement a game board generator. I also would have liked to have more robust tests, mine are limited to functions that don't require objects from the DOM.
 
 I decided to check for win state on every field entry because I liked the immediate feedback, but it would probably be more performant to have the user manually choose to check the solution since the board isn't even full for most of the checks.
 
