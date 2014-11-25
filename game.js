@@ -101,7 +101,9 @@ var refreshGame = function() {
     toggleWinningModal();
   }
   clearGameBoard();
-  resetSaveGame();
+  if (localStorage["game_in_progress"] === 'true') {
+    resetSaveGame();
+  }
 }
 
 var isCellValid = function(currentCell) {
