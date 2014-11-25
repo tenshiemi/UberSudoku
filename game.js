@@ -71,14 +71,6 @@ var isCellGroupValid = function(cellInput, currentGroup) {
   return true;
 }
 
-var getCurrentBoard = function() {
-  var board = getCurrentLine("0", 0, "^");
-  for (var i=1; i<9; i++) {
-    board += "," + getCurrentLine(i.toString(), 0, "^");
-  }
-  return board;
-}
-
 var toggleWinningModal = function() {
   $("#overlay").toggle();
   $("#modal--winning").toggle();
