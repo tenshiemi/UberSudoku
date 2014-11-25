@@ -92,7 +92,9 @@ var clearGameBoard = function() {
 }
 
 var refreshGame = function() {
-  toggleWinningModal();
+  if ($("#modal--winning").css("display") !== "none") {
+    toggleWinningModal();
+  }
   clearGameBoard();
   localStorage.clear();
   localStorage.setItem("game_in_progress", true);
@@ -141,7 +143,7 @@ var gameJS = function() {
     }
   });
 
-  $('.close-modal').on('click', refreshGame);
+  $('.blue-button').on('click', refreshGame);
 }
 
 $(gameJS);
