@@ -25,8 +25,8 @@ var setBoardFromSave = function() {
   }
 }
 
-var saveCell = function(cell) {
-  localStorage.setItem(cell.attr('data-cell'), cell.val());
+var saveCell = function($cell) {
+  localStorage.setItem($cell.attr('data-cell'), $cell.val());
 }
 
 var stripUndefinedValues = function(array) {
