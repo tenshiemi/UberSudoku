@@ -30,7 +30,7 @@ var saveCell = function($cell) {
 }
 
 var stripUndefinedValues = function(array) {
-  return $.grep(array, function(item) {
+  return array.filter(function(item) {
     return item.value !== "";
   });
 }
