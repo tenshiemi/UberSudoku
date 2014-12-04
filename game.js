@@ -13,16 +13,16 @@ var resumeGame = function() {
 var setBoardFromSave = function() {
   var currentCellIndex, $currentCell;
   var $activeCells = $('input:enabled');
-  for (var i = 0; i < $activeCells.length; i++) {
-    currentCellIndex = $activeCells[i].getAttribute('data-cell');
+  $.each($activeCells, function() {
+    $currentCell = $(this);
+    currentCellIndex = $currentCell.attr('data-cell');
     if (localStorage[currentCellIndex]) {
-      $currentCell = $("input[data-cell='" +  currentCellIndex + "']" );
       $currentCell.val(localStorage.getItem(currentCellIndex));
       if (!isCellValid($currentCell)) {
         $currentCell.addClass("invalid");
       }
     }
-  }
+  });
 }
 
 var saveCell = function($cell) {
